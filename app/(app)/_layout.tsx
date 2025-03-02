@@ -1,17 +1,11 @@
-import { Text } from 'react-native';
-import { Redirect, Stack } from 'expo-router';
-
-import { useSession } from '@/context/AuthProvider';
+import { Stack } from 'expo-router';
 
 export default function AppLayout() {
-  const { session, isLoading } = useSession();
 
-  if (isLoading) {
-    return <Text>Loading...</Text>;
-  }
-
-  if (!session) {
-    return <Redirect href="/sign-in" />;
-  }
-  return <Stack />;
+  return (
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="+not-found" />
+    </Stack>
+  );
 }
